@@ -1,0 +1,53 @@
+.contenedor {
+    width: 100%;
+    height: 25%;
+    background-color: #F9D0F6;
+}
+
+.contenedorform {
+    width: 100%;
+    height: 20%;
+}
+
+.input {
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.altura {
+    height: 100%;
+}
+
+.icono {
+    font-size: 20px;
+    color: #E93EDD;
+}
+
+.boton {
+    height: 50px;
+    width: 100px;
+}
+
+.redondear {
+    border-radius: 5px;
+}
+
+.eslogan {
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #E93EDD;
+}
+
+.fb {
+    color: #3b5998;
+}
+
+.wa {
+    color: #4dc247;
+}
+
+.ig {
+    color: #125688;
+}

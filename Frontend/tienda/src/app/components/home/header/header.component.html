@@ -1,0 +1,81 @@
+<!--
+<div class="container contenedor redondear">
+    <div class="row align-items-stretch altura">
+        <div class="col-6">
+            <div>
+                <h3 class="eslogan"> Aqui va un eslogan bien chingon</h3>
+            </div>
+        </div>
+        <div class="col-2 d-flex altura align-items-center justify-content-center ">
+
+            <a class="icono" href="#"><i class="fas fa-user">Usuario</i>
+            </a>
+
+        </div>
+        <div class="col-2 d-flex altura align-items-center justify-content-center">
+            <a class="icono" href="#"><i class="far fa-address-card"> Contacto</i>
+            </a>
+
+        </div>
+
+        <div *ngIf="autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
+            <a class="icono" href="#"><i class="fas fa-sign-in-alt">Iniciar Sesion</i>
+            </a>
+
+        </div>
+    </div>
+
+</div>
+-->
+
+<div class="container contenedor redondear">
+    <div class="row align-items-stretch altura">
+        <div class="col-6">
+            <div>
+                <h3 class="eslogan"> Aqui va un eslogan bien chingon</h3>
+            </div>
+        </div>
+
+        <div class="col-2 d-flex altura align-items-center justify-content-center">
+            <a class="nav-link dropdown-toggle icono" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class=" fas fa-user">Usuario</i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Datos de Usuario</a>
+                <a class="dropdown-item" href="#">Pedidos</a>
+                <a class="dropdown-item" href="#">Carrito de compras</a>
+            </div>
+
+        </div>
+
+        <div class="col-2 d-flex altura align-items-center justify-content-center">
+            <a class="nav-link dropdown-toggle icono" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class=" far fa-address-card"> Contacto</i>
+            </a>
+            <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#"><i class="fab fa-whatsapp wa"></i> Whastsapp</a>
+                <a class="dropdown-item" href="#"><i class="fab fa-facebook fb"></i> Facebook</a>
+                <a class="dropdown-item" href="#"><i class="fab fa-instagram ig"></i> Instagram</a>
+            </div>
+
+        </div>
+
+        <div *ngIf="autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
+            <a class=" icono dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class=" far fa-address-card"> Iniciar Sesion</i>
+            </a>
+            <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#"><i ></i> Iniciar Sesion</a>
+                <a class="dropdown-item" href="#"><i ></i> Registrarse</a>
+            </div>
+
+        </div>
+
+        <div *ngIf="!autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
+            <a class="icono" href="#"><i class="fas fa-sign-in-alt">Cerrar Sesion</i>
+            </a>
+
+        </div>
+    </div>
+
+</div>

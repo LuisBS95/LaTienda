@@ -1,0 +1,34 @@
+.titulo {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: bold;
+    font-size: 16px;
+    background-color: #5597EA;
+    color: oldlace;
+}
+
+.fondo {
+    background-color: lightblue;
+}
+
+.categoria {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: initial;
+    font-size: 16px;
+    background-color: lightblue;
+    color: navy;
+}
+
+.margen {
+    margin: 0px;
+}
+
+.contenedor {
+    width: 100%;
+    height: 100px;
+    background-color: #F9D0F6;
+}
+
+.contenedorform {
+    width: 100%;
+    height: 100px;
+}

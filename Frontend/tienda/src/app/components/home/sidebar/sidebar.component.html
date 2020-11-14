@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header titulo">
+        Elige una categoria...
+    </div>
+    <div *ngFor="let categoria of categorias" class="list-group-item categoria d-flex altura align-items-center justify-content-center">
+        <div *ngIf="categoria.tieneSubCategoria">
+            <a class="nav-link dropdown-toggle" (click)="categoriassecundarias(categoria.idCategoria)" href="#" id="puto" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class=" categoria "> {{categoria.categoria}}</i>
+            </a>
+            <div>
+
+                <div class="dropdown-menu" aria-labelledby="puto">
+
+                    <a *ngFor=" let catsec of categoriasSecundarias " class="dropdown-item " href="# "><i class="fab fa-whatsapp wa "></i> {{catsec.categoria}}</a>
+
+                </div>
+
+            </div>
+        </div>
+        <div *ngIf="!categoria.tieneSubCategoria">
+            <a class="nav-link" role="button" href="#">
+                <i class=" categoria "> {{categoria.categoria}}</i>
+            </a>
+        </div>
+    </div>
+</div>
