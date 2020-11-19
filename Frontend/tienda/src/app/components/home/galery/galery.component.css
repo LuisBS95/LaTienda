@@ -1,0 +1,22 @@
+.padding-0 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.bg-marino {
+    background-color: #1e2b38;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.vermas {
+    color: black;
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.detalles {
+    color: black;
+    font-size: small;
+    font-family: 'Times New Roman', Times, serif;
+}

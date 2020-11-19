@@ -1,7 +1,7 @@
 .contenedor {
     width: 100%;
     height: 25%;
-    background-color: #F9D0F6;
+    background-color: #1e2b38;
 }
 
 .contenedorform {
@@ -22,7 +22,7 @@
 
 .icono {
     font-size: 20px;
-    color: #E93EDD;
+    color: #ffffff;
 }
 
 .boton {
@@ -35,9 +35,9 @@
 }
 
 .eslogan {
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
-    color: #E93EDD;
+    color: #ffffff;
 }
 
 .fb {
@@ -49,5 +49,5 @@
 }
 
 .ig {
-    color: #125688;
+    color: #C13584;
 }

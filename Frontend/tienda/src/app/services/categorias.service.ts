@@ -7,11 +7,10 @@ import { Categoria } from '../models/categoria';
   providedIn: 'root'
 })
 export class CategoriasService {
-  categoriasPrincipales: Categoria;
+
   url ='http://localhost:8080/categoria/';
 
   constructor(private http: HttpClient) {
-
    }
 
    public  categoriassecundarias(id : Number) : Observable<Categoria []>{
