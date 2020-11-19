@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../../models/producto';
 import { ProductoServiceService } from '../../../services/producto-service.service';
+import { CategoriasService } from '../../../services/categorias.service';
+import { Categoria } from 'src/app/models/categoria';
+import {map} from 'rxjs/operators';
+
 
 
 @Component({
@@ -10,19 +14,77 @@ import { ProductoServiceService } from '../../../services/producto-service.servi
 })
 export class GaleryComponent implements OnInit {
   productosprin: Producto[];
-  constructor(private servicio: ProductoServiceService) {
-    this.getGaleriaProductos(1);
-  }
+  categorias: Categoria[];
+  
+  productosprin1: Producto[];
+  productosprin2: Producto[];
+  productosprin3: Producto[];
+  productosprin4: Producto[];
 
+ 
+  
+  constructor(private servicio: ProductoServiceService, private servicio2: CategoriasService) {
+   
+   this.getArregloProductos();
+  this.getGaleriaProductos1();
+  this.getGaleriaProductos2();
+  this.getGaleriaProductos3();
+  this.getGaleriaProductos4();
+    
+    
+  }
   ngOnInit(): void {
   }
+  
+  public getArregloProductos(){
+    this.servicio2.categoriasprincipales().subscribe(categ =>{
+      this.categorias = categ;
+      });
+    
+  }
 
-  getGaleriaProductos(id){
+  public getGaleriaProductos(id): Producto[]{
+
     this.servicio.getProductosbycategoria(id).subscribe(prod =>
       {
         console.log(prod);
         this.productosprin = prod;
+        
+      });
+    return this.productosprin;
+  }
+ 
+  public getGaleriaProductos1(){
+    this.servicio.getProductosbycategoria(1).subscribe(prod =>
+      {
+        console.log(prod);
+        this.productosprin1 = prod;
+
       });
   }
+  public getGaleriaProductos2(){
+    this.servicio.getProductosbycategoria(2).subscribe(prod =>
+      {
+        console.log(prod);
+        this.productosprin2 = prod;
 
+      });
+  }
+  public getGaleriaProductos3(){
+    this.servicio.getProductosbycategoria(3).subscribe(prod =>
+      {
+        console.log(prod);
+        this.productosprin3 = prod;
+
+      });
+  }
+  public getGaleriaProductos4(){
+    this.servicio.getProductosbycategoria(4).subscribe(prod =>
+      {
+        console.log(prod);
+        this.productosprin4 = prod;
+
+      });
+  }
 }
+

@@ -1,16 +1,134 @@
-<div class="container my-5">
-    <div class="row">
+<!--<div *ngFor="let categoria of categorias" class="container my-5 p-5 ">
+    <div class="row d-flex justify-content-around">
         <div class="col-12">
-            <h2 class="text-center"></h2>
+            <h2 class="text-center">{{categoria.categoria}}</h2>
+            <hr class="" style="border: 1px solid #000;">
         </div>
 
-        <div *ngFor="let producto of productosprin" class="card col-3">
-            <img [src]="producto.imagen" class="card-img-top img-thumbnail img-fluid" whidth="300" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{producto.producto}}</h5>
-                <!--<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+        <div *ngFor="let producto of categoria.productos" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
+
+            <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
+
+            <div class="card-footer bg-marino">
+                <h6 class="text-center text-white"> {{producto.producto}}</h6>
             </div>
+
+        </div>
+    </div>
+</div> -->
+
+<div *ngFor="let categoria of categorias">
+    <div *ngIf="categoria.idCategoria==1" class="container my-5 p-5 ">
+        <div class="row d-flex justify-content-around">
+            <div class="col-12">
+                <h2 class="text-center vermas">{{categoria.categoria}}</h2>
+                <hr class="" style="border: 1px solid #000;">
+            </div>
+
+            <div *ngFor="let producto of productosprin1" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
+
+                <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
+
+                <div class="card-footer bg-marino">
+                    <h4 class="text-center text-white"> {{producto.producto}}</h4>
+                    <div class="col-12 text-center">
+                        <a class="text-white detalles" href="#"> detalles</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 text-center">
+            <a class="vermas text-center" href="#"> Ver mas...</a>
+            <hr class="" style="border: 1px solid #000;">
+        </div>
+
+    </div>
+</div>
+
+
+<div *ngFor="let categoria of categorias">
+    <div *ngIf="categoria.idCategoria==4" class="container my-5 p-5 ">
+        <div class="row d-flex justify-content-around">
+            <div class="col-12">
+                <h2 class="text-center vermas">{{categoria.categoria}}</h2>
+                <hr class="" style="border: 1px solid #000;">
+            </div>
+
+            <div *ngFor="let producto of productosprin4" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
+
+                <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
+
+                <div class="card-footer bg-marino">
+                    <h4 class="text-center text-white"> {{producto.producto}}</h4>
+                    <div class="col-12 text-center">
+                        <a class="text-white detalles" href="#"> detalles</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 text-center">
+            <a class="vermas text-center" href="#"> Ver mas...</a>
+            <hr class="" style="border: 1px solid #000;">
+        </div>
+    </div>
+</div>
+
+
+<div *ngFor="let categoria of categorias">
+    <div *ngIf="categoria.idCategoria==2" class="container my-5 p-5 ">
+        <div class="row d-flex justify-content-around">
+            <div class="col-12">
+                <h2 class="text-center vermas ">{{categoria.categoria}}</h2>
+                <hr class="" style="border: 1px solid #000;">
+            </div>
+
+            <div *ngFor="let producto of productosprin2" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
+
+                <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
+
+                <div class="card-footer bg-marino">
+                    <h4 class="text-center text-white"> {{producto.producto}}</h4>
+                    <div class="col-12 text-center">
+                        <a class="text-white detalles" href="#"> detalles</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 text-center">
+            <a class="vermas text-center" href="#"> Ver mas...</a>
+            <hr class="" style="border: 1px solid #000;">
+        </div>
+    </div>
+</div>
+
+
+<div *ngFor="let categoria of categorias">
+    <div *ngIf="categoria.idCategoria==3" class="container my-5 p-5 ">
+        <div class="row d-flex justify-content-around">
+            <div class="col-12">
+                <h2 class="text-center vermas">{{categoria.categoria}}</h2>
+                <hr class="" style="border: 1px solid #000;">
+            </div>
+
+            <div *ngFor="let producto of productosprin3" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
+
+                <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
+
+                <div class="card-footer bg-marino">
+                    <h4 class="text-center text-white"> {{producto.producto}}</h4>
+                    <div class="col-12 text-center">
+                        <a class="text-white detalles" href="#"> detalles</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 text-center">
+            <a class="vermas text-center" href="#"> Ver mas...</a>
+            <hr class="" style="border: 1px solid #000;">
         </div>
     </div>
 </div>

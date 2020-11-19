@@ -2,20 +2,20 @@
     font-family: 'Times New Roman', Times, serif;
     font-style: bold;
     font-size: 16px;
-    background-color: #5597EA;
-    color: oldlace;
+    background-color: #1c2731;
+    color: #ffffff;
 }
 
 .fondo {
-    background-color: lightblue;
+    background-color: #29313a;
 }
 
 .categoria {
     font-family: 'Times New Roman', Times, serif;
     font-style: initial;
     font-size: 16px;
-    background-color: lightblue;
-    color: navy;
+    background-color: #083664;
+    color: #ffffff;
 }
 
 .margen {
