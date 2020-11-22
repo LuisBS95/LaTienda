@@ -1,0 +1,72 @@
+<div class="container">
+    <form autocomplete="off" [formGroup]="registro" (ngSubmit)="registar()">
+        <h2 class="titulo text-center">Registrar usuario</h2>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="nombre">Nombre</label>
+
+                <input type="text" class="form-control" placeholder="nombre" id="nombre" formControlName="nombre" [class.is-invalid]="nombreNoValido">
+
+                <div *ngIf="nombreNoValido" class="invalid-feedback">
+                    *Nombre es un campo requerido
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="nombre">Apellido</label>
+
+                <input type="text" class="form-control" placeholder="apellido" id="apellido" formControlName="apellido" [class.is-invalid]="apellidoNoValido">
+
+                <div *ngIf="apellidoNoValido" class="invalid-feedback">
+                    *Apellido es un campo requerido
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="email">Email</label>
+
+                <input type="text" class="form-control" placeholder="email" id="email" formControlName="email" [class.is-invalid]="emailNoValido">
+
+                <div *ngIf="emailNoValido" class="invalid-feedback">
+                    *email es un campo requerido
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="fechaNacimiento">Fexha de Nacimiento</label>
+
+                <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" [class.is-invalid]="fechaNacimientoNoValido">
+
+                <div *ngIf="fechaNacimientoNoValido" class="invalid-feedback">
+                    *Formato de fecha invalido
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="password">Password</label>
+
+                <input type="password" class="form-control" placeholder="password" id="password" formControlName="password" [class.is-invalid]="passwordNoValido">
+
+                <div *ngIf="passwordNoValido" class="invalid-feedback">
+                    *password es un campo requerido
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="pass2">Repita Password</label>
+
+                <input type="password" class="form-control" id="pass2" formControlName="pass2" [class.is-invalid]="pass2NoValido">
+
+                <div *ngIf="pass2NoValido" class="invalid-feedback">
+                    *Los passwords deben coincidir
+                </div>
+            </div>
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </form>
+</div>

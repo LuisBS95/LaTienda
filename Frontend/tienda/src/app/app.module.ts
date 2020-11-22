@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +13,7 @@ import { HeaderComponent } from './components/home/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { SliderComponent } from './components/home/slider/slider.component';
 import { GaleryComponent } from './components/home/galery/galery.component';
+import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,15 @@ import { GaleryComponent } from './components/home/galery/galery.component';
     HeaderComponent,
     HomeComponent,
     SliderComponent,
-    GaleryComponent
+    GaleryComponent,
+    RegistroUsuarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
     
   ],
   providers: [],
