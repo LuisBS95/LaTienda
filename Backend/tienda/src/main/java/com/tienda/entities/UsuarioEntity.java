@@ -30,7 +30,11 @@ public class UsuarioEntity implements Serializable {
 	
 	@Column(name = "fecha_nacimiento")
 	private Date fechaNacimiento;
-//
+	
+	private String password;
+
+
+	//
 	@JoinColumn(name = "id_direccion", referencedColumnName = "id_direccion")
 	@ManyToOne( cascade = CascadeType.PERSIST  )
 	private DireccionEntity direccion;
@@ -94,6 +98,14 @@ public class UsuarioEntity implements Serializable {
 
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public DireccionEntity getDireccion() {

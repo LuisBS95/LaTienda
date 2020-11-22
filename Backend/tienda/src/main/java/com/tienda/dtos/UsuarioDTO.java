@@ -24,21 +24,31 @@ public class UsuarioDTO {
 	
 	private Date fechaNacimiento;
 	
+	private String password;
+	
+	
+
 	private List<PedidosEntity> pedidos;
 	
 	private DireccionEntity direccion;	
 	
 	
-	public UsuarioDTO(UsuarioEntity u) {
 	
-		this.idUsuario = u.getIdUsuario();
-		this.nombre = u.getNombre();
-		this.apellido = u.getApellido();
-		this.email = u.getEmail();
-		this.fechaNacimiento = u.getFechaNacimiento();
-		this.pedidos = u.getPedidos();
-		this.direccion = u.getDireccion();
+	public UsuarioDTO() {
 		
+	}
+
+	public UsuarioDTO(Long idUsuario, String nombre, String apellido, String email, Date fechaNacimiento,
+			String password, List<PedidosEntity> pedidos, DireccionEntity direccion) {
+		super();
+		this.idUsuario = idUsuario;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.fechaNacimiento = fechaNacimiento;
+		this.password = password;
+		this.pedidos = pedidos;
+		this.direccion = direccion;
 	}
 
 	public List<PedidosEntity> getPedidos() {
@@ -95,6 +105,14 @@ public class UsuarioDTO {
 
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

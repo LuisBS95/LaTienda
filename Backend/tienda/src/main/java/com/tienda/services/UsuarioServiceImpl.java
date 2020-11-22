@@ -2,12 +2,15 @@ package com.tienda.services;
 
 import java.util.List;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tienda.dtos.Combinada;
 import com.tienda.dtos.Icombinada;
+import com.tienda.dtos.UsuarioDTO;
 import com.tienda.entities.UsuarioEntity;
 import com.tienda.repositories.UsuarioDao;
 
@@ -29,6 +32,34 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public List<Icombinada> combinado() {
 		
 		return usuarioDao.findCom();
+	}
+
+	@Override
+	@Transactional
+	public UsuarioEntity registrar(UsuarioDTO usuario) {
+		
+		if(usuario!= null) {
+			UsuarioEntity usuarioen = UsuarioDTOToEntiry(usuario);
+			usuarioDao.save(usuarioen);
+			return usuarioen;
+		}
+		return null;
+	}
+	
+	//Usuario DTO to entity
+	
+	public static UsuarioEntity UsuarioDTOToEntiry(UsuarioDTO usuario) {
+		
+		UsuarioEntity usuarioen = new UsuarioEntity();
+		
+		usuarioen.setNombre(usuario.getNombre());
+		usuarioen.setApellido(usuario.getApellido());
+		usuarioen.setEmail(usuario.getEmail());
+		usuarioen.setFechaNacimiento(usuario.getFechaNacimiento());
+		usuarioen.setPassword(usuario.getPassword());
+		
+		return usuarioen;
+		
 	}
 
 }
