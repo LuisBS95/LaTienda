@@ -13,19 +13,23 @@ export class RegistroUsuarioComponent implements OnInit {
 
   registro: FormGroup;
   usuario: Usuario;
+
+  usu: boolean;
   constructor( private fb: FormBuilder, private validadores: ValidadoresService, private usuariosService: UsuariosService , private router : Router) {
       this.crearFormulario();
       this.usuario = new Usuario();
    }
 
   ngOnInit(): void {
+    
   }
 
   crearFormulario() {
     this.registro = this.fb.group({
       nombre :['', Validators.required],
       apellido :['', Validators.required],
-      email :['', Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')],
+      // tslint:disable-next-line: max-line-length
+      email :['', Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}'),this.validadores.existeEmail],
       fechaNacimiento :['', Validators.required],
       password :['', Validators.required],
       pass2 :['', Validators.required]
@@ -59,6 +63,7 @@ export class RegistroUsuarioComponent implements OnInit {
     const pass2 = this.registro.get('pass2').value;
     return (pass1 === pass2) ? false : true;
   }
+  
 
 
   registar(){
@@ -77,7 +82,6 @@ export class RegistroUsuarioComponent implements OnInit {
     this.usuario.fechaNacimiento = this.registro.get('fechaNacimiento').value;
     this.usuario.password = this.registro.get('password').value;
     console.log(this.usuario);
-
     this.usuariosService.insertarUsuario(this.usuario).subscribe( resp =>{
       console.log(resp);
       this.router.navigateByUrl('/home');

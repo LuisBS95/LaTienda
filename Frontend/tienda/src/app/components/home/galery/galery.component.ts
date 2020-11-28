@@ -4,6 +4,7 @@ import { ProductoServiceService } from '../../../services/producto-service.servi
 import { CategoriasService } from '../../../services/categorias.service';
 import { Categoria } from 'src/app/models/categoria';
 import {map} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 
@@ -23,7 +24,7 @@ export class GaleryComponent implements OnInit {
 
  
   
-  constructor(private servicio: ProductoServiceService, private servicio2: CategoriasService) {
+  constructor(private servicio: ProductoServiceService, private servicio2: CategoriasService, private router: Router) {
    
    this.getArregloProductos();
   this.getGaleriaProductos1();
@@ -85,6 +86,14 @@ export class GaleryComponent implements OnInit {
         this.productosprin4 = prod;
 
       });
+  }
+
+  public listaProductos(idCat: number){
+    this.router.navigate(['/productos', idCat]);
+    console.log("id: ");
+    
+    console.log(idCat);
+    
   }
 }
 

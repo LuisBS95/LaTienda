@@ -62,4 +62,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public boolean existeUsuario(String email) {
+		List<String> emails = usuarioDao.findbyEmail(email);
+		
+		if(emails.size()==0) {
+		return false;
+		}
+		else {
+		return true;
+		}
+	}
+
+	@Override
+	public List<String> existeUsu(String email) {
+		
+		return usuarioDao.findbyEmail(email);
+	}
+	
+	
+
 }
