@@ -18,5 +18,9 @@ public interface UsuarioService {
 	public List<Icombinada> combinado();
 	
 	public UsuarioEntity registrar(UsuarioDTO usuario);
+	
+	public boolean existeUsuario(String email);
+	
+	public List<String> existeUsu(String email);
 
 }

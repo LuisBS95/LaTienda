@@ -13,8 +13,11 @@ export class UsuariosService {
   constructor( private http: HttpClient
               ) { }
 
-  insertarUsuario( usurio: Usuario) : Observable<Usuario>{
+  insertarUsuario( usuario: Usuario) : Observable<Usuario>{
 
-    return this.http.post<Usuario>(`${this.url}/registar`,usurio);
+    return this.http.post<Usuario>(`${this.url}/registar`, usuario);
+  }
+  hayEmail(email:String) : Observable<boolean>{
+    return this.http.get<boolean>(`${this.url}/email/${email}`);
   }
 }
