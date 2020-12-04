@@ -15,5 +15,8 @@ export class ProductoServiceService {
   getProductosbycategoria(idCategoria: number): Observable<Producto []> {
     return this.http.get<Producto[]>(`${this.url}/listar/${idCategoria}`);
   }
-
+  
+  getProductosbycategoriasl(idCategoria: number): Observable<Producto []> {
+    return this.http.get<Producto[]>(`${this.url}/listarsl/${idCategoria}`);
+  }
 }

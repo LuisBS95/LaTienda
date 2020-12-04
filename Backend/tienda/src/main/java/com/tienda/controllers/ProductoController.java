@@ -27,4 +27,10 @@ public class ProductoController {
 		
 		return productoService.encontrarProductosCat(id);
 	}
+	
+	@GetMapping("/listarsl/{id}") 
+	public List<ProductosCat> listarProductosl(@PathVariable Long id ){
+		
+		return productoService.encontrarProductosCatSinLimites(id);
+	}
 }

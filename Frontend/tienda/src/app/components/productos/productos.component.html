@@ -1,7 +1,7 @@
 <div class="container my-5 p-5 ">
     <div class="row d-flex justify-content-around">
         <div class="col-12">
-            <h2 class="text-center vermas">Categoria</h2>
+            <h2 class="text-center vermas">{{productos[0].categoria}}</h2>
             <hr class="" style="border: 1px solid #000;">
         </div>
 
@@ -12,15 +12,56 @@
             <div class="card-footer bg-marino">
                 <h4 class="text-center text-white"> {{producto.producto}}</h4>
                 <div class="col-12 text-center">
-                    <a class="text-white detalles" href="#"> detalles</a>
+
+                    <!-- Button trigger modal -->
+                    <div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" (click)="cargamodal(producto)" href="#modal">Detalles</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content padding-0 bg-dark">
+                                <div class="modal-header footer">
+                                    <h5 class="titulo" id="exampleModalLabel">Informacion del producto</h5>
+                                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <form>
+                                    <div class="modal-body fondo">
+                                        <div class="row">
+
+                                            <div class="col-7"><img [src]="productoseleccionado.imagen" class="img-thumbnail border" whidth="100px" alt="..."></div>
+                                            <div class="col-5">
+                                                <ul class="list-group">
+
+                                                    <li class="list-group-item sinbg">Id: <br>{{productoseleccionado.idProducto}}</li>
+                                                    <li class="list-group-item sinbg">Producto: <br>{{productoseleccionado.producto}}</li>
+                                                    <li class="list-group-item sinbg">Precio:<br> $ {{productoseleccionado.precio}}</li>
+                                                    <li class="list-group-item sinbg">Categoria:<br> {{productoseleccionado.categoria}}</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-12 margen">
+                                                <h6 class="list-group-item sinbg mt2"> Descripcion: <br> {{productoseleccionado.descripcion}}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer footer">
+                                            <label for="cantidad">Cantidad: </label>
+                                            <input type="number" class="form-control col-2" id="cantidad" required min="0" placeholder="">
+                                            <button class="btn btn-primary" type="submit">Agregar al carrito</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
-    <div class="col-12 text-center">
-        <a class="vermas text-center" href="#"> Ver mas...</a>
-        <hr class="" style="border: 1px solid #000;">
-    </div>
+
 
 </div>
