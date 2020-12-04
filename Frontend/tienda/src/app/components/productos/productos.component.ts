@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/models/producto';
 import { ProductoServiceService } from '../../services/producto-service.service';
+import { CategoriasService } from '../../services/categorias.service';
+import { Categoria } from 'src/app/models/categoria';
 
 @Component({
   selector: 'app-productos',
@@ -11,20 +13,28 @@ import { ProductoServiceService } from '../../services/producto-service.service'
 export class ProductosComponent implements OnInit {
   id: number;
   productos: Producto[];
-  constructor(private activatedRoute: ActivatedRoute, private productoService: ProductoServiceService) { 
+  categoria: Categoria;
+  productoseleccionado: Producto = null;
+  // tslint:disable-next-line: max-line-length
+  constructor(private activatedRoute: ActivatedRoute, private productoService: ProductoServiceService, private catService: CategoriasService) { 
     this.activatedRoute.params.subscribe(params => {
       this.id = params['idCat'];
       console.log(this.id);
+      this.productoService.getProductosbycategoriasl(this.id).subscribe(prod => {
+        this.productos = prod;
+        console.log(prod);      
+        this.productoseleccionado = this.productos[0];
+      });
       
     } );
+    
   }
 
   ngOnInit(): void {
-    this.productoService.getProductosbycategoria(this.id).subscribe(prod => {
-      this.productos = prod;
-      console.log(prod);
-      
-    });
+    
   }
 
+  cargamodal(producto: Producto){
+      this.productoseleccionado = producto;
+  }
 }

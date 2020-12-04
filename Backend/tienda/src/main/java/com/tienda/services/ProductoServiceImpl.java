@@ -25,6 +25,12 @@ public class ProductoServiceImpl implements ProductoService {
 		
 		return productoDao.findProductosCat(id);
 	}
+
+	@Override
+	public List<ProductosCat> encontrarProductosCatSinLimites(Long id) {
+		
+		return productoDao.findProductosCatLimitless(id);
+	}
 	
 	
 

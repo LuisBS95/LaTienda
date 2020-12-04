@@ -21,4 +21,8 @@ export class CategoriasService {
     return this.http.get<Categoria[]>(this.url + 'super'); 
     }
 
+    public categoriaid(id: number): Observable<Categoria> {
+      return this.http.get<Categoria>(this.url + 'id/' + id);
+    }
+
 }

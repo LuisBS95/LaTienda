@@ -96,4 +96,3 @@ export class GaleryComponent implements OnInit {
     
   }
 }
-
