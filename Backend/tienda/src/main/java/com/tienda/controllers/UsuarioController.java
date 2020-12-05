@@ -1,4 +1,5 @@
 package com.tienda.controllers;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tienda.dtos.Combinada;
+import com.tienda.dtos.IProdPedCat;
 import com.tienda.dtos.Icombinada;
+import com.tienda.dtos.Ipedidos;
 import com.tienda.dtos.UsuarioDTO;
 import com.tienda.entities.UsuarioEntity;
+import com.tienda.repositories.UsuarioDao;
 import com.tienda.services.UsuarioService;
 
 import ch.qos.logback.core.status.Status;
@@ -29,6 +33,9 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private UsuarioDao usuarioDao;
 	
 	@GetMapping({"/listar","/",""})
 	public List <UsuarioEntity> listarUsuarios(){
@@ -59,5 +66,20 @@ public class UsuarioController {
 	@GetMapping("/email2/{email}")
 	public List<String> existeE(@PathVariable(name="email") String email) {
 		return usuarioService.existeUsu(email);
+	}
+	
+	@GetMapping("/user/{id}")
+	public UsuarioEntity encontrarUsario(@PathVariable(name="id") Long id) {
+		return usuarioService.encontrarUsuario(id);
+	}
+	
+	@GetMapping("/pedidos/{id}")
+	public List<Ipedidos> encontrarPedidos(@PathVariable(name="id") Long id) {
+		return usuarioService.encontrarPedidos(id);
+	}
+
+	@GetMapping("/productos/{idPedido}")
+	public List<IProdPedCat> encontrarProductos(@PathVariable(name="idPedido") Long idPedido) {
+		return usuarioService.encontrarProductos(idPedido);
 	}
 }

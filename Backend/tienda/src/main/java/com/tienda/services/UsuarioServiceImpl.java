@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tienda.dtos.Combinada;
+import com.tienda.dtos.IProdPedCat;
 import com.tienda.dtos.Icombinada;
+import com.tienda.dtos.Ipedidos;
+import com.tienda.dtos.ProductosCat;
 import com.tienda.dtos.UsuarioDTO;
+import com.tienda.entities.PedidosEntity;
 import com.tienda.entities.UsuarioEntity;
 import com.tienda.repositories.UsuarioDao;
 
@@ -80,6 +84,28 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 		return usuarioDao.findbyEmail(email);
 	}
+	
+	
+	@Override
+	@Transactional(readOnly = true)
+	public UsuarioEntity encontrarUsuario(Long id) {
+		
+		return usuarioDao.findById(id).orElse(null);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Ipedidos> encontrarPedidos(Long id) {
+		
+		return usuarioDao.findPedidos(id);
+	}
+
+	@Override
+	public List<IProdPedCat> encontrarProductos(Long idPedido) {
+		
+		return usuarioDao.findProductos(idPedido);
+	}
+	
 	
 	
 
