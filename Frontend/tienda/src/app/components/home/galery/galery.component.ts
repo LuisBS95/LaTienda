@@ -5,6 +5,10 @@ import { CategoriasService } from '../../../services/categorias.service';
 import { Categoria } from 'src/app/models/categoria';
 import {map} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { PedidosProductos } from '../../../models/pedidos-productos';
+import { NgForm } from '@angular/forms';
+import { ProductosComponent } from '../../productos/productos.component';
+
 
 
 
@@ -14,34 +18,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./galery.component.css']
 })
 export class GaleryComponent implements OnInit {
-  productosprin: Producto[];
-  categorias: Categoria[];
-  
-  productosprin1: Producto[];
-  productosprin2: Producto[];
-  productosprin3: Producto[];
-  productosprin4: Producto[];
+  productosprin: Producto[] = new Array();
+  categorias: Categoria[] = new Array();
+  productoseleccionado: Producto = new Producto();
+ 
 
  
   
+  // tslint:disable-next-line: max-line-length
   constructor(private servicio: ProductoServiceService, private servicio2: CategoriasService, private router: Router) {
    
-   this.getArregloProductos();
-  this.getGaleriaProductos1();
-  this.getGaleriaProductos2();
-  this.getGaleriaProductos3();
-  this.getGaleriaProductos4();
-    
+   this.getArregloProductos();    
     
   }
   ngOnInit(): void {
   }
   
   public getArregloProductos(){
-    this.servicio2.categoriasprincipales().subscribe(categ =>{
-      this.categorias = categ;
+    this.servicio2.categoriasprincipales().subscribe((categ: Categoria[]) => {
+
+      categ.forEach(cat => {
+        this.servicio.getProductosbycategoria(cat.idCategoria).subscribe(prod =>
+          {
+            cat.productos = prod;
+            this.categorias.push(cat);
+          });
+     });
+
       });
-    
+    console.log(this.categorias);
   }
 
   public getGaleriaProductos(id): Producto[]{
@@ -55,44 +60,24 @@ export class GaleryComponent implements OnInit {
     return this.productosprin;
   }
  
-  public getGaleriaProductos1(){
-    this.servicio.getProductosbycategoria(1).subscribe(prod =>
-      {
-        console.log(prod);
-        this.productosprin1 = prod;
+  
 
-      });
-  }
-  public getGaleriaProductos2(){
-    this.servicio.getProductosbycategoria(2).subscribe(prod =>
-      {
-        console.log(prod);
-        this.productosprin2 = prod;
-
-      });
-  }
-  public getGaleriaProductos3(){
-    this.servicio.getProductosbycategoria(3).subscribe(prod =>
-      {
-        console.log(prod);
-        this.productosprin3 = prod;
-
-      });
-  }
-  public getGaleriaProductos4(){
-    this.servicio.getProductosbycategoria(4).subscribe(prod =>
-      {
-        console.log(prod);
-        this.productosprin4 = prod;
-
-      });
-  }
-
+  // tslint:disable-next-line: typedef
   public listaProductos(idCat: number){
     this.router.navigate(['/productos', idCat]);
     console.log("id: ");
-    
     console.log(idCat);
     
   }
+
+  cargamodal(producto: Producto){
+    this.productoseleccionado = producto;
+}
+
+agregaralcarrito(forma: NgForm, idProducto: number){
+  
+ this.servicio.agregaralcarrito(forma , idProducto);
+ 
+}
+
 }

@@ -4,6 +4,8 @@ import { Producto } from 'src/app/models/producto';
 import { ProductoServiceService } from '../../services/producto-service.service';
 import { CategoriasService } from '../../services/categorias.service';
 import { Categoria } from 'src/app/models/categoria';
+import { PedidosProductos } from '../../models/pedidos-productos';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-productos',
@@ -12,17 +14,17 @@ import { Categoria } from 'src/app/models/categoria';
 })
 export class ProductosComponent implements OnInit {
   id: number;
-  productos: Producto[];
+  productos: Producto[] = new Array();
   categoria: Categoria;
-  productoseleccionado: Producto = null;
+  productoseleccionado: Producto = new Producto();
+  cantidad: number;
+  public pedidosproductos: PedidosProductos[] = new Array();
   // tslint:disable-next-line: max-line-length
   constructor(private activatedRoute: ActivatedRoute, private productoService: ProductoServiceService, private catService: CategoriasService) { 
     this.activatedRoute.params.subscribe(params => {
       this.id = params['idCat'];
-      console.log(this.id);
       this.productoService.getProductosbycategoriasl(this.id).subscribe(prod => {
         this.productos = prod;
-        console.log(prod);      
         this.productoseleccionado = this.productos[0];
       });
       
@@ -36,5 +38,14 @@ export class ProductosComponent implements OnInit {
 
   cargamodal(producto: Producto){
       this.productoseleccionado = producto;
+  }
+
+  agregaralcarrito(forma: NgForm, idProducto: number){
+  
+    this.productoService.agregaralcarrito(forma, idProducto);
+
+
+    
+   
   }
 }

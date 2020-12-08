@@ -10,5 +10,7 @@ public interface ProductoService {
 	public List<ProductoEntity> encontrarProductos();
 	public List<ProductosCat> encontrarProductosCat(Long id);
 	public List<ProductosCat> encontrarProductosCatSinLimites(Long id);
+	public ProductosCat encontrarProductoPorId(Long Id);
+	
 
 }

@@ -15,6 +15,7 @@ import { SliderComponent } from './components/home/slider/slider.component';
 import { GaleryComponent } from './components/home/galery/galery.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { ProductosComponent } from './components/productos/productos.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProductosComponent } from './components/productos/productos.component';
     SliderComponent,
     GaleryComponent,
     RegistroUsuarioComponent,
-    ProductosComponent
+    ProductosComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

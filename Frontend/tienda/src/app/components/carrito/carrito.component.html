@@ -1,0 +1,42 @@
+<div class="container justify-content-center">
+    <h3 class="text-center mt-5 titulo">
+        Lista de compras</h3>
+
+    <table class="table mt-5 a">
+
+        <tr class="thead-dark">
+            <th>Imagen</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th *ngIf="!can">Cantidad</th>
+            <th *ngIf="can">Editar </th>
+            <th><button type="button" class="btn btn-primary" (click)="edita()">{{edit}}</button></th>
+        </tr>
+
+
+        <tr *ngFor="let pro of carritos" class="">
+
+            <td><img src="{{pro.imagen}}" class=" border img-thumbnail" width="100px" alt="..."></td>
+            <td>{{pro.producto}}</td>
+            <td>{{pro.precio}}</td>
+            <td *ngIf="!can">{{pro.cantidad}}</td>
+
+            <td *ngIf="can">
+                <div>
+                    <input class="col-3" style="width: 70px;" #cantidad (change)="edite(pro,cantidad.value)" type="number" requiered min="0" class="form-control" placeholder="{{pro.cantidad}}">
+                </div>
+            </td>
+            <td>
+
+                &nbsp; &nbsp;
+                <button type="button" class="btn btn-danger" (click)="borrar(pro)">Borrar</button>
+            </td>
+
+        </tr>
+    </table>
+
+
+    <button type="button" class="btn btn-primary d-block mt-5 mb-5" (click)="guardar()">Comprar</button>
+
+
+</div>
