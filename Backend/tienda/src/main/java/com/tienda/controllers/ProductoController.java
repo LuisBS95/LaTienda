@@ -33,4 +33,10 @@ public class ProductoController {
 		
 		return productoService.encontrarProductosCatSinLimites(id);
 	}
+	
+	@GetMapping("/carrito/{id}")
+	public ProductosCat Producto(@PathVariable Long id) {
+		return productoService.encontrarProductoPorId(id);
+	}
+	
 }

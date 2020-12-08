@@ -14,11 +14,7 @@
                 <div class="col-12 text-center">
 
                     <!-- Button trigger modal -->
-                    <div>
-                        <div>
 
-                        </div>
-                    </div>
                     <button type="button" class="btn btn-primary btn-block" data-toggle="modal" (click)="cargamodal(producto)" href="#modal">Detalles</button>
 
                     <!-- Modal -->
@@ -29,7 +25,7 @@
                                     <h5 class="titulo" id="exampleModalLabel">Informacion del producto</h5>
                                     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 </div>
-                                <form>
+                                <form autocomplete="off" (ngSubmit)="agregaralcarrito(forma,productoseleccionado.idProducto)" #forma="ngForm">
                                     <div class="modal-body fondo">
                                         <div class="row">
 
@@ -47,11 +43,12 @@
                                                 <h6 class="list-group-item sinbg mt2"> Descripcion: <br> {{productoseleccionado.descripcion}}</h6>
                                             </div>
                                         </div>
-                                        <div class="modal-footer footer">
-                                            <label for="cantidad">Cantidad: </label>
-                                            <input type="number" class="form-control col-2" id="cantidad" required min="0" placeholder="">
-                                            <button class="btn btn-primary" type="submit">Agregar al carrito</button>
-                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer footer">
+                                        <label for="cantidad">Cantidad: </label>
+                                        <input type="number" class="form-control col-2" id="cantidad" required min="0" placeholder="0" name="cantidad" #cantidad="ngModel" [ngModel]="cantidad">
+                                        <button class="btn btn-primary" type="submit">Agregar al carrito</button>
                                     </div>
                                 </form>
                             </div>

@@ -1,7 +1,8 @@
-<!--<div *ngFor="let categoria of categorias" class="container my-5 p-5 ">
-    <div class="row d-flex justify-content-around">
+<div *ngFor="let categoria of categorias" class="container my-5 p-5">
+
+    <div class="row d-flex justify-content-around ">
         <div class="col-12">
-            <h2 class="text-center">{{categoria.categoria}}</h2>
+            <h2 class="text-center vermas">{{categoria.categoria}}</h2>
             <hr class="" style="border: 1px solid #000;">
         </div>
 
@@ -10,125 +11,55 @@
             <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
 
             <div class="card-footer bg-marino">
-                <h6 class="text-center text-white"> {{producto.producto}}</h6>
-            </div>
+                <h4 class="text-center text-white"> {{producto.producto}}</h4>
+                <div class="col-12 text-center">
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" (click)="cargamodal(producto)" href="#modal">Detalles</button>
 
-        </div>
-    </div>
-</div> -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content padding-0 ">
+                                <div class="modal-header footer">
+                                    <h5 class="titulo" id="exampleModalLabel">Informacion del producto</h5>
+                                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <form autocomplete="off" (ngSubmit)="agregaralcarrito(forma,productoseleccionado.idProducto)" #forma="ngForm">
+                                    <div class="modal-body fondo">
+                                        <div class="row">
 
-<div *ngFor="let categoria of categorias">
-    <div *ngIf="categoria.idCategoria==1" class="container my-5 p-5 ">
-        <div class="row d-flex justify-content-around">
-            <div class="col-12">
-                <h2 class="text-center vermas">{{categoria.categoria}}</h2>
-                <hr class="" style="border: 1px solid #000;">
-            </div>
+                                            <div class="col-7"><img [src]="productoseleccionado.imagen" class="img-thumbnail border" whidth="100px" alt="..."></div>
+                                            <div class="col-5">
+                                                <ul class="list-group">
 
-            <div *ngFor="let producto of productosprin1" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
+                                                    <li class="list-group-item sinbg">Id: <br>{{productoseleccionado.idProducto}}</li>
+                                                    <li class="list-group-item sinbg">Producto: <br>{{productoseleccionado.producto}}</li>
+                                                    <li class="list-group-item sinbg">Precio:<br> $ {{productoseleccionado.precio}}</li>
+                                                    <li class="list-group-item sinbg">Categoria:<br> {{productoseleccionado.categoria}}</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-12 margen">
+                                                <h6 class="list-group-item sinbg mt2"> Descripcion: <br> {{productoseleccionado.descripcion}}</h6>
+                                            </div>
+                                        </div>
 
-                <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
-
-                <div class="card-footer bg-marino">
-                    <h4 class="text-center text-white"> {{producto.producto}}</h4>
-                    <div class="col-12 text-center">
-                        <a class="text-white detalles" href="#"> detalles</a>
+                                    </div>
+                                    <div class="modal-footer footer">
+                                        <label for="cantidad">Cantidad: </label>
+                                        <input type="number" class="form-control col-2" id="cantidad" required min="0" placeholder="" name="cantidad" #cantidad="ngModel" [ngModel]="cantidad">
+                                        <button class="btn btn-primary" type="submit">Agregar al carrito</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-            </div>
-        </div>
-        <div class="col-12 text-center">
-            <button class="vermas btn btn-link text-center" (click)="listaProductos(categoria.idCategoria)"> Ver mas...</button>
-            <hr class="" style="border: 1px solid #000;">
-        </div>
-
-    </div>
-</div>
-
-
-<div *ngFor="let categoria of categorias">
-    <div *ngIf="categoria.idCategoria==4" class="container my-5 p-5 ">
-        <div class="row d-flex justify-content-around">
-            <div class="col-12">
-                <h2 class="text-center vermas">{{categoria.categoria}}</h2>
-                <hr class="" style="border: 1px solid #000;">
             </div>
 
-            <div *ngFor="let producto of productosprin4" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
-
-                <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
-
-                <div class="card-footer bg-marino">
-                    <h4 class="text-center text-white"> {{producto.producto}}</h4>
-                    <div class="col-12 text-center">
-                        <a class="text-white detalles" href="#"> detalles</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-12 text-center">
-            <button class="vermas btn btn-link text-center" (click)="listaProductos(categoria.idCategoria)"> Ver mas...</button>
-            <hr class="" style="border: 1px solid #000;">
         </div>
     </div>
-</div>
-
-
-<div *ngFor="let categoria of categorias">
-    <div *ngIf="categoria.idCategoria==2" class="container my-5 p-5 ">
-        <div class="row d-flex justify-content-around">
-            <div class="col-12">
-                <h2 class="text-center vermas ">{{categoria.categoria}}</h2>
-                <hr class="" style="border: 1px solid #000;">
-            </div>
-
-            <div *ngFor="let producto of productosprin2" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
-
-                <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
-
-                <div class="card-footer bg-marino">
-                    <h4 class="text-center text-white"> {{producto.producto}}</h4>
-                    <div class="col-12 text-center">
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-12 text-center">
-            <button class="vermas btn btn-link text-center" (click)="listaProductos(categoria.idCategoria)"> Ver mas...</button>
-            <hr class="" style="border: 1px solid #000;">
-        </div>
+    <div class="col-12 text-center">
+        <button class="vermas btn btn-link text-center" (click)="listaProductos(categoria.idCategoria)"> Ver mas...</button>
+        <hr class="" style="border: 1px solid #000;">
     </div>
-</div>
 
-
-<div *ngFor="let categoria of categorias">
-    <div *ngIf="categoria.idCategoria==3" class="container my-5 p-5 ">
-        <div class="row d-flex justify-content-around">
-            <div class="col-12">
-                <h2 class="text-center vermas">{{categoria.categoria}}</h2>
-                <hr class="" style="border: 1px solid #000;">
-            </div>
-
-            <div *ngFor="let producto of productosprin3" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
-
-                <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
-
-                <div class="card-footer bg-marino">
-                    <h4 class="text-center text-white"> {{producto.producto}}</h4>
-                    <div class="col-12 text-center">
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-12 text-center">
-            <button class="vermas btn btn-link text-center" (click)="listaProductos(categoria.idCategoria)"> Ver mas...</button>
-            <hr class="" style="border: 1px solid #000;">
-        </div>
-    </div>
 </div>
