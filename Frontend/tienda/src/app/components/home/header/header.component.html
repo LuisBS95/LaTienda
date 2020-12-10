@@ -1,51 +1,30 @@
 <div class="contenedor container redondear">
 
-    <div class="row align-items-stretch altura">
+    <div class="row align-items-center altura">
         <div class="col-6">
             <div>
                 <h3 class="eslogan nav-link"> Aqui va un eslogan...</h3>
             </div>
         </div>
-
-
-
-        <div class="col-2 d-flex altura align-items-center justify-content-center">
-            <a class="nav-link dropdown-toggle icono" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class=" fas fa-user"> Usuario </i>
+        <div class="col-2">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class=" fas fa-user icono"> Usuario </i>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Datos de Usuario</a>
-                <a class="dropdown-item" href="#">Pedidos</a>
-                <a class="dropdown-item" routerLink="carrito">Carrito de compras</a>
+            <div class="dropdown-menu dma" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item dm" href="#">Datos de Usuario</a>
+                <a class="dropdown-item dm" href="#">Pedidos</a>
+                <a class="dropdown-item dm" routerLink="carrito">Carrito de compras</a>
             </div>
-
         </div>
-        <div class="col-2 d-flex altura align-items-center justify-content-center">
-            <a class="nav-link icono" routerLink="home" id="navbarDropdownMenuLink" role="button">
-                <i class="fas fa-home"> Home </i>
-            </a>
-        </div>
-        <!--
-        <div class="col-2 d-flex altura align-items-center justify-content-center">
-            <a class="nav-link dropdown-toggle icono" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class=" far fa-address-card"> Contacto</i>
-            </a>
-            <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" routerLink="home"><i class="fab fa-whatsapp wa"></i> Whastsapp</a>
-                <a class="dropdown-item" href="#"><i class="fab fa-facebook fb"></i> Facebook</a>
-                <a class="dropdown-item" href="#"><i class="fab fa-instagram ig"></i> Instagram</a>
-            </div>
+        <div *ngIf="autenticado" class="col-2">
 
-        </div>
-        -->
-
-        <div *ngIf="autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
-            <a class="nav-link  dropdown-toggle icono" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class=" far fa-address-card"> Iniciar Sesion</i>
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class=" fas fa-user icono"> Log In</i>
             </a>
-            <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#"><i ></i> Iniciar Sesion</a>
-                <a class="dropdown-item" routerLink="/registrar"><i ></i> Registrarse</a>
+
+            <div class="dropdown-menu dma" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item dm" href="#"><i ></i> Iniciar Sesion</a>
+                <a class="dropdown-item dm" routerLink="/registrar"><i ></i>Registrarse</a>
             </div>
 
         </div>
@@ -55,5 +34,22 @@
             </a>
 
         </div>
+        <!--<div class="col-2 d-flex altura align-items-center justify-content-center">
+                <a class="nav-link dropdown-toggle icono" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class=" far fa-address-card"> Contacto</i>
+                </a>
+                <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" routerLink="home"><i class="fab fa-whatsapp wa"></i> Whastsapp</a>
+                    <a class="dropdown-item" href="#"><i class="fab fa-facebook fb"></i> Facebook</a>
+                    <a class="dropdown-item" href="#"><i class="fab fa-instagram ig"></i> Instagram</a>
+                </div>
+
+            </div>-->
+        <div class="col-2">
+            <a class="nav-link" routerLink="home" id="navbarDropdownMenuLink" role="button">
+                <i class="fas fa-home icono"> Home </i>
+            </a>
+        </div>
+
     </div>
 </div>

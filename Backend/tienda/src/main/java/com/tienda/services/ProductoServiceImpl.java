@@ -1,5 +1,6 @@
 package com.tienda.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,8 @@ public class ProductoServiceImpl implements ProductoService {
 	
 		return productoDao.findProductosById(Id);
 	}
+	
+	
 	
 	
 

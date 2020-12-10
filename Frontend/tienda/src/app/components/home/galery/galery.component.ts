@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Producto } from '../../../models/producto';
 import { ProductoServiceService } from '../../../services/producto-service.service';
 import { CategoriasService } from '../../../services/categorias.service';
 import { Categoria } from 'src/app/models/categoria';
-import {map} from 'rxjs/operators';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
-import { PedidosProductos } from '../../../models/pedidos-productos';
+
 import { NgForm } from '@angular/forms';
-import { ProductosComponent } from '../../productos/productos.component';
+
 
 
 
@@ -18,6 +18,7 @@ import { ProductosComponent } from '../../productos/productos.component';
   styleUrls: ['./galery.component.css']
 })
 export class GaleryComponent implements OnInit {
+  modalRef: BsModalRef;
   productosprin: Producto[] = new Array();
   categorias: Categoria[] = new Array();
   productoseleccionado: Producto = new Producto();
@@ -26,7 +27,7 @@ export class GaleryComponent implements OnInit {
  
   
   // tslint:disable-next-line: max-line-length
-  constructor(private servicio: ProductoServiceService, private servicio2: CategoriasService, private router: Router) {
+  constructor(private servicio: ProductoServiceService, private servicio2: CategoriasService, private router: Router,private modalService: BsModalService) {
    
    this.getArregloProductos();    
     
@@ -77,7 +78,10 @@ export class GaleryComponent implements OnInit {
 agregaralcarrito(forma: NgForm, idProducto: number){
   
  this.servicio.agregaralcarrito(forma , idProducto);
- 
+ this.modalRef.hide();   
 }
-
+openModal(template: TemplateRef<any>,producto: Producto) {
+  this.productoseleccionado = producto;
+  this.modalRef = this.modalService.show(template);
+}
 }

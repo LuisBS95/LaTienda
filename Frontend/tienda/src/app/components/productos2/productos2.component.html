@@ -1,23 +1,26 @@
-<div *ngFor="let categoria of categorias" class="container my-5 p-5">
-
-    <div class="row d-flex justify-content-around ">
+<div class="container my-5 p-5 ">
+    <div class="row d-flex justify-content-around">
         <div class="col-12">
-            <h2 class="text-center vermas">{{categoria.categoria}}</h2>
+            <h2 class="text-center vermas">{{productos[0].categoria}}</h2>
             <hr class="" style="border: 1px solid #000;">
         </div>
 
-        <div *ngFor="let producto of categoria.productos" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
+        <div *ngFor="let producto of productos" class="card border-dark col-12 col-sm-5 col-lg-3  my-3 mx-1 padding-0">
 
             <img [src]="producto.imagen" class="card-img-top img-fluid" whidth="10" alt="...">
 
             <div class="card-footer bg-marino">
                 <h4 class="text-center text-white"> {{producto.producto}}</h4>
                 <div class="col-12 text-center">
-                    <button type="button" class="btn btn-primary btn-block" (click)="openModal(template,producto)">detalles</button>
+
+                    <!-- Button trigger modal -->
+
+                    <button type="button" class="btn btn-primary btn-block" (click)="openModal(template)">Detalles</button>
 
                     <!-- Modal -->
                     <ng-template #template>
-                        <div class="modal-content padding-0 ">
+
+                        <div class="modal-content padding-0 bg-dark">
                             <div class="modal-header footer">
                                 <h5 class="titulo" id="exampleModalLabel">Informacion del producto</h5>
                                 <button type="button" class="close text-white" (click)="modalRef.hide()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -44,21 +47,18 @@
                                 </div>
                                 <div class="modal-footer footer">
                                     <label for="cantidad">Cantidad: </label>
-                                    <input type="number" class="form-control col-2" id="cantidad" required min="0" placeholder="" name="cantidad" #cantidad="ngModel" [ngModel]="cantidad">
+                                    <input type="number" class="form-control col-2" id="cantidad" required min="0" placeholder="0" name="cantidad" #cantidad="ngModel" [ngModel]="cantidad">
                                     <button class="btn btn-primary" type="submit">Agregar al carrito</button>
                                 </div>
                             </form>
                         </div>
-                    </ng-template>
 
+                    </ng-template>
                 </div>
             </div>
 
         </div>
     </div>
-    <div class="col-12 text-center">
-        <button class="vermas btn btn-link text-center" (click)="listaProductos(categoria.idCategoria)"> Ver mas...</button>
-        <hr class="" style="border: 1px solid #000;">
-    </div>
+
 
 </div>
