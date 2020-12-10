@@ -1,4 +1,7 @@
 package com.tienda.controllers;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,4 +42,18 @@ public class ProductoController {
 		return productoService.encontrarProductoPorId(id);
 	}
 	
+//	@GetMapping("hora/{a}")
+//	public String ponerhora(@PathVariable String a) throws ParseException {		
+//		SimpleDateFormat forma = new SimpleDateFormat("dd-MM-yyyy");
+//		
+//		Date hoy = new Date();
+//		String hoy1=forma.format(hoy);
+//		
+//		SimpleDateFormat forma2 = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+//		
+//		String nueva = hoy1 + " "+a;
+//		hoy= forma2.parse(nueva);
+//		String f=forma2.format(hoy);
+//		return hoy.toString() +"    otro estilo:    "+ f  ;
+//	}
 }

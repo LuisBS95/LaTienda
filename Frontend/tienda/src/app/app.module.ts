@@ -16,7 +16,8 @@ import { GaleryComponent } from './components/home/galery/galery.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
-
+import { Productos2Component } from './components/productos2/productos2.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,14 +30,16 @@ import { CarritoComponent } from './components/carrito/carrito.component';
     GaleryComponent,
     RegistroUsuarioComponent,
     ProductosComponent,
-    CarritoComponent
+    CarritoComponent,
+    Productos2Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
     
   ],
   providers: [],

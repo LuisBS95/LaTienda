@@ -1,0 +1,60 @@
+.padding-0 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.bg-marino {
+    background-color: #1e2b38;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.vermas {
+    color: black;
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.detalles {
+    color: white;
+    font-size: small;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.footer {
+    background: #1e2b38;
+    color: aliceblue;
+}
+
+.fondo {
+    background-image: url(../../../assets/img/logo/patron.jpg);
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.margen {
+    margin-top: 10px;
+}
+
+.titulo {
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sinbg {
+    background-color: rgba(76, 175, 80, 0);
+    font-size: medium;
+    text-align: center;
+    font-weight: bold;
+}
+
+.margenizq {
+    margin-left: 0px;
+}
+
+.margender {
+    margin-right: 0px;
+}

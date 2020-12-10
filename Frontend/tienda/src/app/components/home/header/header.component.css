@@ -51,3 +51,24 @@
 .ig {
     color: #C13584;
 }
+
+.dm {
+    background-color: #1e2b38;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffffff;
+}
+
+.dma {
+    background-color: #1e2b38;
+    border: 2px;
+    border-style: solid;
+    border-color: #ffffff;
+}
+
+.dm:hover {
+    background-color: #ffffff;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    color: #1e2b38;
+}

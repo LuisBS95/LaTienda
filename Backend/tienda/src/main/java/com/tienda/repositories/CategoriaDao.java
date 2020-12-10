@@ -15,7 +15,7 @@ import com.tienda.entities.UsuarioEntity;
 
 public interface CategoriaDao extends PagingAndSortingRepository<CategoriaEntity, Long> {
 		
-		@Query(value = "select * from categoria c where c.sub_categoria is null", nativeQuery = true)
+		@Query(value = "select * from categoria c where c.sub_categoria is null order by c.id_categoria", nativeQuery = true)
 		List<CategoriaEntity> findSuperCategorias();
 		
 		@Query(value = "select * from categoria c where c.sub_categoria = :id", nativeQuery = true)
