@@ -10,6 +10,7 @@ import com.tienda.dtos.Combinada;
 import com.tienda.dtos.IProdPedCat;
 import com.tienda.dtos.Icombinada;
 import com.tienda.dtos.Ipedidos;
+import com.tienda.dtos.Itoken;
 import com.tienda.entities.UsuarioEntity;
 
 public interface UsuarioDao extends PagingAndSortingRepository<UsuarioEntity, Long> {
@@ -34,4 +35,7 @@ public interface UsuarioDao extends PagingAndSortingRepository<UsuarioEntity, Lo
 			+ " LEFT JOIN categoria c ON pr.id_categoria = c.id_categoria"
 			+ " where p.id_pedido = :idPedido ", nativeQuery = true)
 	List<IProdPedCat> findProductos(@Param("idPedido") Long idPedido);
+	
+	@Query( value = "select email as email, password as pass from usuario where email=:email and password=:pass",nativeQuery = true)
+	Itoken getToken(@Param("email")String email,@Param("pass")String pass);
 }

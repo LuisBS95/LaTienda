@@ -9,7 +9,7 @@ import { Usuario } from '../models/Usuario';
 export class UsuariosService {
 
   url = 'http://localhost:8080/usuario';
-
+  public auten:boolean;
   constructor( private http: HttpClient
               ) { }
 
@@ -19,5 +19,16 @@ export class UsuariosService {
   }
   hayEmail(email:String) : Observable<boolean>{
     return this.http.get<boolean>(`${this.url}/email/${email}`);
+  }
+
+  getToken(email: string, pass ): Observable<Usuario>{
+
+  
+    return this.http.get<Usuario>(`${this.url}/token/${email}/${pass}`);
+  }
+
+  autenticar(aut:boolean)
+  {
+      this.auten= aut;
   }
 }

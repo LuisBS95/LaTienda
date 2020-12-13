@@ -34,3 +34,13 @@ a {
 .instagram:hover {
     background: #C13584;
 }
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -12,6 +12,7 @@ import com.tienda.dtos.Combinada;
 import com.tienda.dtos.IProdPedCat;
 import com.tienda.dtos.Icombinada;
 import com.tienda.dtos.Ipedidos;
+import com.tienda.dtos.Itoken;
 import com.tienda.dtos.ProductosCat;
 import com.tienda.dtos.UsuarioDTO;
 import com.tienda.entities.PedidosEntity;
@@ -106,7 +107,19 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return usuarioDao.findProductos(idPedido);
 	}
 	
-	
+	@Override
+	public UsuarioDTO getToken(String email, String pass) {
+		
+		 Itoken token = usuarioDao.getToken(email, pass);
+		 if( token != null) {
+			 UsuarioDTO userToken = new UsuarioDTO();
+			 userToken.setEmail(token.getEmail());
+			 userToken.setPassword(token.getPass());
+			 return userToken;
+		 }
+		
+		return null;
+	}
 	
 
 }
