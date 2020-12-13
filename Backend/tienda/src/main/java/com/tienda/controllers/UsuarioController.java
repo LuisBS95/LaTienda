@@ -82,4 +82,11 @@ public class UsuarioController {
 	public List<IProdPedCat> encontrarProductos(@PathVariable(name="idPedido") Long idPedido) {
 		return usuarioService.encontrarProductos(idPedido);
 	}
+	
+	@GetMapping("/token/{email}/{pass}")
+	public UsuarioDTO getToken(@PathVariable(value = "email" ) String email,@PathVariable(value = "pass") String pass) {
+		
+		
+		return usuarioService.getToken(email, pass);
+	}
 }

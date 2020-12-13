@@ -18,6 +18,7 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { Productos2Component } from './components/productos2/productos2.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     RegistroUsuarioComponent,
     ProductosComponent,
     CarritoComponent,
-    Productos2Component
+    Productos2Component,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

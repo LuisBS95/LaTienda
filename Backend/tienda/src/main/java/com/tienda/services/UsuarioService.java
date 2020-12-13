@@ -30,5 +30,7 @@ public interface UsuarioService {
 	public List<Ipedidos> encontrarPedidos(Long id);
 	
 	public List<IProdPedCat> encontrarProductos(Long idPedido);
+	
+	public UsuarioDTO getToken(String email, String pass);
 
 }

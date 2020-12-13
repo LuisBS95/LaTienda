@@ -16,21 +16,21 @@
                 <a class="dropdown-item dm" routerLink="carrito">Carrito de compras</a>
             </div>
         </div>
-        <div *ngIf="autenticado" class="col-2">
-
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class=" fas fa-user icono"> Log In</i>
+        <div *ngIf="!autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
+            <a class="nav-link icono dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class=" far fa-address-card"> Entrar</i>
             </a>
-
             <div class="dropdown-menu dma" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item dm" href="#"><i ></i> Iniciar Sesion</a>
-                <a class="dropdown-item dm" routerLink="/registrar"><i ></i>Registrarse</a>
+
+                <a class="dropdown-item dm" type="button" (click)="openModal()">Iniciar Sesion</a>
+
+                <a class="dropdown-item dm" routerLink="/registrar"> Registrarse</a>
             </div>
 
         </div>
 
-        <div *ngIf="!autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
-            <a class="icono" href="#"><i class="fas fa-sign-in-alt">Cerrar Sesion</i>
+        <div *ngIf="autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
+            <a class="icono text-white" (click)="cerrar()"><i class="fas fa-sign-in-alt">Cerrar Sesion</i>
             </a>
 
         </div>
