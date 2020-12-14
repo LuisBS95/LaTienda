@@ -14,6 +14,7 @@ export class CarritoComponent implements OnInit {
 public carritos: Carrito[] = new Array();
 can = false;
 edit = 'Editar';
+total=0;
 
   constructor(public productosServicio: ProductoServiceService) {
       this.carritos = this.productosServicio.pedidosproductos;
@@ -29,7 +30,7 @@ edit = 'Editar';
     if ( i !== -1 ) {
        this.productosServicio.pedidosproductos.splice(i, 1);
       }
-
+      this.crearArreglo();
     localStorage.setItem('carrito', JSON.stringify(this.productosServicio.pedidosproductos));
 }
 edite(car : Carrito, cantidad: number){
@@ -60,12 +61,14 @@ edite(car : Carrito, cantidad: number){
 
 // tslint:disable-next-line: typedef
 crearArreglo(){
+  this.total=0;
   this.carritos.forEach( ped => {
     this.productosServicio.getProductosbyid(ped.idProducto).subscribe(
       (prod: Producto) =>
       {ped.producto = prod.producto;
        ped.precio = prod.precio;
        ped.imagen = prod.imagen.substr(4);
+       this.total= this.total + (ped.cantidad*ped.precio);
   });
 });
 }

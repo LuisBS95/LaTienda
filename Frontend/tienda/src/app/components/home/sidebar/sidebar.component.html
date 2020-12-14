@@ -11,14 +11,14 @@
 
                 <div class="dropdown-menu" aria-labelledby="puto">
 
-                    <a *ngFor=" let catsec of categoriasSecundarias " class="dropdown-item " href="# "><i class="fab fa-whatsapp wa "></i> {{catsec.categoria}}</a>
+                    <a *ngFor=" let catsec of categoriasSecundarias " class="dropdown-item " (click)="irProductos(categoria.idCategoria)"><i class="fab fa-whatsapp wa "></i> {{catsec.categoria}}</a>
 
                 </div>
 
             </div>
         </div>
         <div *ngIf="!categoria.tieneSubCategoria">
-            <a class="nav-link" role="button" href="#">
+            <a class="nav-link" role="button" (click)="irProductos(categoria.idCategoria)">
                 <i class=" categoria "> {{categoria.categoria}}</i>
             </a>
         </div>

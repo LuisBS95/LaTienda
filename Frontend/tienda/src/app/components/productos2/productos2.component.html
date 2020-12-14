@@ -1,4 +1,14 @@
 <div class="container my-5 p-5 ">
+    <div class="input-group mb-5 d-flex justify-content-center">
+        <select class="custom-select col-8" name="miselect" [(ngModel)]="idCategoria">
+            <option selected [value]="0">Cambiar Categoria</option>
+            <option [value]="cat.idCategoria" *ngFor="let cat of categoriasPrincipales">{{cat.categoria}}</option>
+            </select>
+
+        <div class="input-group-append">
+            <button class="btn btn-outline-success" (click)="irCategoria(idCategoria)" type="button">Button</button>
+        </div>
+    </div>
     <div class="row d-flex justify-content-around">
         <div class="col-12">
             <h2 class="text-center vermas">{{productos[0].categoria}}</h2>
@@ -15,7 +25,7 @@
 
                     <!-- Button trigger modal -->
 
-                    <button type="button" class="btn btn-primary btn-block" (click)="openModal(template)">Detalles</button>
+                    <button type="button" class="btn btn-primary btn-block" (click)="openModal(template,producto)">Detalles</button>
 
                     <!-- Modal -->
                     <ng-template #template>

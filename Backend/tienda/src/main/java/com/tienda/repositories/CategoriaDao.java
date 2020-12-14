@@ -21,7 +21,8 @@ public interface CategoriaDao extends PagingAndSortingRepository<CategoriaEntity
 		@Query(value = "select * from categoria c where c.sub_categoria = :id", nativeQuery = true)
 		List<CategoriaEntity> findSubCategorias(@Param("id") Long id);
 
-	
+		@Query(value="select * from categoria c where c.id_categoria = :id", nativeQuery = true)
+		CategoriaEntity findCategoriaById(@Param("id")Long id);
 	
 
 }

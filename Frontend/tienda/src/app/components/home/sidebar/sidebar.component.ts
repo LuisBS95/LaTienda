@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/models/categoria';
 import { CategoriasService } from '../../../services/categorias.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,7 +14,7 @@ export class SidebarComponent {
   categorias: Categoria[];
   categoriasSecundarias: Categoria[];
   tieneSubCategorias: boolean;
-  constructor(private service: CategoriasService) {
+  constructor(private service: CategoriasService, private router:Router) {
   service.categoriasprincipales().subscribe(cat => {
 
       console.log(cat);
@@ -42,5 +43,10 @@ export class SidebarComponent {
   });
    }
 
-
+public irProductos(id:number)
+{
+  if(id>0){
+    this.router.navigateByUrl('productos/'+id);
+   }
+}
 }

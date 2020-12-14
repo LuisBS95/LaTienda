@@ -7,3 +7,17 @@
 .ancho {
     width: 50px;
 }
+
+.total {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: #1e2b38;
+    color: white;
+}
+
+.tabla {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+    font-weight: bold;
+}

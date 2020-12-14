@@ -55,6 +55,12 @@ public class CategoriaServiceImpl implements CategoriaService {
 		});
 		return subCategos;
 	}
+
+	@Override
+	public CategoriaEntity Categoria(Long id) {
+		// TODO Auto-generated method stub
+		return categoriaDao.findCategoriaById(id);
+	}
 	
 
 

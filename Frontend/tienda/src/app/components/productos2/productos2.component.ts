@@ -1,6 +1,6 @@
 
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/models/producto';
 import { ProductoServiceService } from '../../services/producto-service.service';
 import { CategoriasService } from '../../services/categorias.service';
@@ -18,12 +18,17 @@ export class Productos2Component implements OnInit {
   modalRef: BsModalRef;
   id: number;
   productos: Producto[] = new Array();
+  
   categoria: Categoria;
+  ctg:Categoria = new Categoria();
   productoseleccionado: Producto = new Producto();
   cantidad: number;
+  categoriasPrincipales: Categoria[] = new Array();
+  idCategoria =0;
   public pedidosproductos: PedidosProductos[] = new Array();
   // tslint:disable-next-line: max-line-length
-  constructor(private activatedRoute: ActivatedRoute, private productoService: ProductoServiceService, private catService: CategoriasService,private modalService: BsModalService) { 
+  constructor(private activatedRoute: ActivatedRoute, private productoService: ProductoServiceService, private catService: CategoriasService,private modalService: BsModalService, private route: Router) { 
+    this.productos[0]=new Producto();
     this.activatedRoute.params.subscribe(params => {
       this.id = params['idCat'];
       this.productoService.getProductosbycategoriasl(this.id).subscribe(prod => {
@@ -33,6 +38,7 @@ export class Productos2Component implements OnInit {
       
     } );
     
+    this.listarCategorias();
   }
 
   ngOnInit(): void {
@@ -44,12 +50,23 @@ export class Productos2Component implements OnInit {
   }
 
   agregaralcarrito(forma: NgForm, idProducto: number){  
+    
     this.productoService.agregaralcarrito(forma, idProducto); 
     this.modalRef.hide();
    
   }
-  openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>,producto: Producto) {
     this.modalRef = this.modalService.show(template);
+    this.productoseleccionado = producto;
   }
   
+  listarCategorias(){
+    this.catService.categoriasprincipales().subscribe(cat=>this.categoriasPrincipales=cat);
+  }
+
+  irCategoria(i:number){
+   if(i>0){
+    this.route.navigateByUrl('productos/'+i);
+   }
+}
 }

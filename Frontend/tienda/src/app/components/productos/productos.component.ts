@@ -19,6 +19,7 @@ export class ProductosComponent implements OnInit {
   categoria: Categoria;
   productoseleccionado: Producto = new Producto();
   cantidad: number;
+  categoriasPrincipales: Categoria[] = new Array();
   public pedidosproductos: PedidosProductos[] = new Array();
   // tslint:disable-next-line: max-line-length
   constructor(private activatedRoute: ActivatedRoute, private productoService: ProductoServiceService, private catService: CategoriasService) { 
@@ -30,7 +31,7 @@ export class ProductosComponent implements OnInit {
       });
       
     } );
-    
+    this.listarCategorias();
   }
 
   ngOnInit(): void {
@@ -43,10 +44,11 @@ export class ProductosComponent implements OnInit {
 
   agregaralcarrito(forma: NgForm, idProducto: number){
   
-    this.productoService.agregaralcarrito(forma, idProducto);
-
-
-    
+    this.productoService.agregaralcarrito(forma, idProducto);   
    
+  }
+
+  listarCategorias(){
+    this.catService.categoriasprincipales().subscribe(cat=>this.categoriasPrincipales=cat);
   }
 }
