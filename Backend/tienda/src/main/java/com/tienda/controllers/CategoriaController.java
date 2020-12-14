@@ -32,5 +32,10 @@ public class CategoriaController {
 	public List<CategoriaEntity> listarSub(@PathVariable(name = "id") Long id){
 		return categoriaService.SubCategorias(id);
 	}
+	
+	@GetMapping("/id/{id}")
+	public CategoriaEntity listarCat(@PathVariable(name = "id") Long id){
+		return categoriaService.Categoria(id);
+	}
 
 }

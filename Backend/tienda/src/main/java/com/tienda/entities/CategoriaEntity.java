@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -25,6 +26,7 @@ public class CategoriaEntity implements Serializable {
 	@Column(name = "sub_categoria")
 	private Long subCategoria;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL )
 	private List<ProductoEntity> productos;
 

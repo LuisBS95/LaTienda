@@ -15,5 +15,7 @@ public interface CategoriaService {
 	public List <CategoriaEntity> SubCategorias(Long id);
 	
 	public List <SubCtaegoria> EncontrarSubcategoria();
+	
+	public CategoriaEntity Categoria(Long id);
 
 }
