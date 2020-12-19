@@ -13,7 +13,7 @@ interface ErrorValidate {
 })
 export class ValidadoresService {
 
-  hayUsuario: any;
+  hayUsuario=true;
   url = 'http://localhost:8080/usuario';
   constructor(private http: HttpClient, private usuario: UsuariosService) { 
     
@@ -33,7 +33,7 @@ export class ValidadoresService {
   }
 
 
-  existeEmail( control: FormControl ){
+  existeEmail( control: FormControl):Promise<ErrorValidate>|Observable<ErrorValidate>{
 
     console.log("hay usuario: ");
     if ( !control.value ) {
@@ -43,18 +43,16 @@ export class ValidadoresService {
 
    const bb: string =control.value;
    
-    
-    this.http.get<boolean>(`${this.url}/email/${bb}`).subscribe(value => {
-      this.hayUsuario = value;
+     this.usuario.hayEmail(bb).subscribe(value=>{
+      this.hayUsuario=value;
       console.log(value);
       
       console.log("hay usuario: ");
       
-      console.log(this.hayUsuario);
-      
-      
-
-  } );
+      console.log(this.hayUsuario); 
+     });
+    
+   
 
 
   }

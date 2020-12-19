@@ -4,20 +4,26 @@ import { ValidadoresService } from '../../services/validadores.service';
 import { Usuario } from '../../models/Usuario';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router';
+import { Token } from '../../models/Token';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registro-usuario',
   templateUrl: './registro-usuario.component.html',
   styleUrls: ['./registro-usuario.component.css']
 })
 export class RegistroUsuarioComponent implements OnInit {
-
+  existeEmail: boolean;
   registro: FormGroup;
   usuario: Usuario;
-
+  token: Token = new Token();
   usu: boolean;
   constructor( private fb: FormBuilder, private validadores: ValidadoresService, private usuariosService: UsuariosService , private router : Router) {
       this.crearFormulario();
       this.usuario = new Usuario();
+      ;
+    if(JSON.parse(localStorage.getItem('token')) != null){
+      this.router.navigateByUrl('/home');      
+    }
    }
 
   ngOnInit(): void {
@@ -29,7 +35,7 @@ export class RegistroUsuarioComponent implements OnInit {
       nombre :['', Validators.required],
       apellido :['', Validators.required],
       // tslint:disable-next-line: max-line-length
-      email :['', Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}'),this.validadores.existeEmail],
+      email :['', Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')],
       fechaNacimiento :['', Validators.required],
       password :['', Validators.required],
       pass2 :['', Validators.required]
@@ -69,14 +75,16 @@ export class RegistroUsuarioComponent implements OnInit {
   registar(){
     console.log(this.registro);
 
-    if(this.registro.invalid) {
-
-      return Object.values( this.registro.controls).forEach( control=> {
-        control.markAsTouched();
-      });
-    }
-
-    this.usuario.nombre = this.registro.get('nombre').value;
+    this.usuariosService.hayEmail(this.registro.get('email').value).subscribe(valor=>{
+      this.existeEmail=valor;
+      console.log(valor);
+      
+      if(valor==false){
+        Swal.fire({
+          text: 'Autenticacion Correcta',
+          icon: 'success'
+        });
+        this.usuario.nombre = this.registro.get('nombre').value;
     this.usuario.apellido = this.registro.get('apellido').value;
     this.usuario.email = this.registro.get('email').value;
     this.usuario.fechaNacimiento = this.registro.get('fechaNacimiento').value;
@@ -84,9 +92,35 @@ export class RegistroUsuarioComponent implements OnInit {
     console.log(this.usuario);
     this.usuariosService.insertarUsuario(this.usuario).subscribe( resp =>{
       console.log(resp);
-      this.router.navigateByUrl('/home');
+      this.token.user = this.registro.get('email').value;
+        this.token.pass = this.registro.get('password').value;
+        localStorage.setItem('token', JSON.stringify(this.token));
+        
+        window.location.reload();
       
     } );
+      }
+
+      else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ese email ya fue registrado!',
+          footer: 'Revise sus Credenciales'
+        });
+        //this.registro.reset();
+      }
+
+    });
+
+    if(this.registro.invalid) {
+
+      return Object.values( this.registro.controls).forEach( control=> {
+        control.markAsTouched();
+      });
+    }
+
+    
     
   }
 }
