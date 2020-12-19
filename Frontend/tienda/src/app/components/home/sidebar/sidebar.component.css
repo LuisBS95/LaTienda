@@ -2,19 +2,19 @@
     font-family: 'Times New Roman', Times, serif;
     font-style: bold;
     font-size: 16px;
-    background-color: #1c2731;
+    background-color: #1e2b38;
     color: #ffffff;
 }
 
 .fondo {
-    background-color: #29313a;
+    background-color: rgba(30, 43, 56, 0.85);
 }
 
 .categoria {
     font-family: 'Times New Roman', Times, serif;
     font-style: initial;
     font-size: 16px;
-    background-color: #083664;
+    background-color: rgba(30, 43, 56, 1);
     color: #ffffff;
 }
 
@@ -25,10 +25,35 @@
 .contenedor {
     width: 100%;
     height: 100px;
-    background-color: #F9D0F6;
+    background-color: rgba(30, 43, 56, 0.5);
 }
 
 .contenedorform {
     width: 100%;
     height: 100px;
+}
+
+.dma {
+    background-color: #1e2b38;
+    border: 1px;
+    border-style: solid;
+    border-color: #ffffff;
+}
+
+.dm {
+    background-color: #1e2b38;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+}
+
+.dm:hover {
+    background-color: #ffffff;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    color: #1e2b38;
+}
+
+a {
+    color: white;
 }

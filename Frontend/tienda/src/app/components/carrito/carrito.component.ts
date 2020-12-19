@@ -3,6 +3,7 @@ import { ProductoServiceService } from '../../services/producto-service.service'
 import { Producto } from '../../models/producto';
 import { Carrito } from '../../models/carrito';
 import { PedidosProductos } from '../../models/pedidos-productos';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
@@ -15,14 +16,40 @@ public carritos: Carrito[] = new Array();
 can = false;
 edit = 'Editar';
 total=0;
-
-  constructor(public productosServicio: ProductoServiceService) {
+vacio=false;
+carritosCantidad=0;
+margenes="margen";
+inputId=0;
+  constructor(public productosServicio: ProductoServiceService, private route: Router) {
       this.carritos = this.productosServicio.pedidosproductos;
+      this.carritosCantidad=this.carritos.length;
       this.crearArreglo();
-   }
+      if(this.carritosCantidad>0){
+        this.vacio=false;
+        
+        if(this.carritosCantidad==1){
+          this.margenes="margen";
+        }
+        if(this.carritosCantidad==2){
+          this.margenes="mar";
+        }
+        if(this.carritosCantidad>2){
+          this.margenes="mari";
+        }
+      }
+      else{
+        this.vacio=true;
+      }
+
+    
+    }
 
   ngOnInit(): void {
-  }
+   
+    
+
+ }
+  
   
   borrar ( car: Carrito ) {
     let i = this.carritos.indexOf( car );
@@ -32,6 +59,7 @@ total=0;
       }
       this.crearArreglo();
     localStorage.setItem('carrito', JSON.stringify(this.productosServicio.pedidosproductos));
+    window.location.reload();
 }
 edite(car : Carrito, cantidad: number){
 
@@ -73,17 +101,20 @@ crearArreglo(){
 });
 }
 
-edita(){
+edita(input : number){
 this.can = !this.can;
+this.inputId=input;
 if(this.can){
   this.edit = 'Aceptar';
+  
 }
 else{
   this.edit = 'Editar';
 }
 
 }
-guardar(){
-  
+regresar(){
+  this.route.navigateByUrl("/home");
 }
+guardar(){}
 }
