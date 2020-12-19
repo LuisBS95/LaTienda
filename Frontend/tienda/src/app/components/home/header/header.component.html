@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="col-2">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a *ngIf="autenticado" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class=" fas fa-user icono"> Usuario </i>
             </a>
             <div class="dropdown-menu dma" aria-labelledby="navbarDropdownMenuLink">
@@ -22,7 +22,7 @@
             </a>
             <div class="dropdown-menu dma" aria-labelledby="navbarDropdownMenuLink">
 
-                <a class="dropdown-item dm" type="button" (click)="openModal()">Iniciar Sesion</a>
+                <a class="dropdown-item dm text-white" (click)="openModal()">Iniciar Sesion</a>
 
                 <a class="dropdown-item dm" routerLink="/registrar"> Registrarse</a>
             </div>
