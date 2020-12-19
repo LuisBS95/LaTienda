@@ -1,40 +1,40 @@
-<div class="contenedor container redondear">
-
-    <div class="row align-items-center altura">
-        <div class="col-6">
-            <div>
-                <h3 class="eslogan nav-link"> Aqui va un eslogan...</h3>
+<div class="contenedor  redondear">
+    <div class="container">
+        <div class="row align-items-center altura">
+            <div class="col-6">
+                <div>
+                    <h3 class="eslogan nav-link"> Aqui va un eslogan...</h3>
+                </div>
             </div>
-        </div>
-        <div class="col-2">
-            <a *ngIf="autenticado" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class=" fas fa-user icono"> Usuario </i>
-            </a>
-            <div class="dropdown-menu dma" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item dm" href="#">Datos de Usuario</a>
-                <a class="dropdown-item dm" href="#">Pedidos</a>
-                <a class="dropdown-item dm" routerLink="carrito">Carrito de compras</a>
+            <div class="col-2">
+                <a *ngIf="autenticado" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class=" fas fa-user icono"> Usuario </i>
+                </a>
+                <div class="dropdown-menu dma" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item dm" href="#">Datos de Usuario</a>
+                    <a class="dropdown-item dm" href="#">Pedidos</a>
+                    <a class="dropdown-item dm" routerLink="carrito">Carrito de compras</a>
+                </div>
             </div>
-        </div>
-        <div *ngIf="!autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
-            <a class="nav-link icono dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class=" far fa-address-card"> Entrar</i>
-            </a>
-            <div class="dropdown-menu dma" aria-labelledby="navbarDropdownMenuLink">
+            <div *ngIf="!autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
+                <a class="nav-link icono dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class=" far fa-address-card"> Entrar</i>
+                </a>
+                <div class="dropdown-menu dma" aria-labelledby="navbarDropdownMenuLink">
 
-                <a class="dropdown-item dm text-white" (click)="openModal()">Iniciar Sesion</a>
+                    <a class="dropdown-item dm text-white" (click)="openModal()">Iniciar Sesion</a>
 
-                <a class="dropdown-item dm" routerLink="/registrar"> Registrarse</a>
+                    <a class="dropdown-item dm" routerLink="/registrar"> Registrarse</a>
+                </div>
+
             </div>
 
-        </div>
-
-        <div *ngIf="autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
-            <a class="icono text-white" (click)="cerrar()"><i class="fas fa-sign-in-alt">Cerrar Sesion</i>
+            <div *ngIf="autenticado" class="col-2 d-flex altura align-items-center justify-content-center">
+                <a class="icono text-white" (click)="cerrar()"><i class="fas fa-sign-in-alt">Cerrar Sesion</i>
             </a>
 
-        </div>
-        <!--<div class="col-2 d-flex altura align-items-center justify-content-center">
+            </div>
+            <!--<div class="col-2 d-flex altura align-items-center justify-content-center">
                 <a class="nav-link dropdown-toggle icono" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class=" far fa-address-card"> Contacto</i>
                 </a>
@@ -45,11 +45,12 @@
                 </div>
 
             </div>-->
-        <div class="col-2">
-            <a class="nav-link" routerLink="home" id="navbarDropdownMenuLink" role="button">
-                <i class="fas fa-home icono"> Home </i>
-            </a>
-        </div>
+            <div class="col-2">
+                <a class="nav-link" routerLink="home" id="navbarDropdownMenuLink" role="button">
+                    <i class="fas fa-home icono"> Home </i>
+                </a>
+            </div>
 
+        </div>
     </div>
 </div>

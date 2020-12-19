@@ -4,7 +4,10 @@
 }
 
 .bgazulclaro {
-    background-color: #083664;
+    background-color: #1e2b38;
+    border: 2px;
+    border-style: solid;
+    border-color: #ffffff;
 }
 
 .margen {

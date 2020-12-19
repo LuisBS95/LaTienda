@@ -1,4 +1,14 @@
-<div class="container justify-content-center">
+<div *ngIf="vacio" class="container marg">
+    <div class="caja bg-alerta aling-items-center">
+        <h2>Aun no tienes productos agregados al carrito</h2>
+
+    </div>
+    <p></p>
+    <button type="button" class="btn btn-primary btn-block" (click)="regresar()">Regresar</button>
+    <div></div>
+
+</div>
+<div [ngClass]="margenes" *ngIf="!vacio" class="container justify-content-centerng ">
     <h3 class="text-center mt-5 titulo">
         Lista de compras</h3>
 
@@ -8,11 +18,11 @@
             <th>Imagen</th>
             <th>Producto</th>
             <th>Precio</th>
-
-            <th *ngIf="!can">Cantidad</th>
-            <th *ngIf="can">Editar </th>
+            <th>Cantidad</th>
+            <!--<th *ngIf="!can">Cantidad</th>
+            <th *ngIf="can">Editar</th>-->
             <th>Total</th>
-            <th><button type="button" class="btn btn-primary" (click)="edita()">{{edit}}</button></th>
+            <th> Opciones</th>
         </tr>
 
 
@@ -20,18 +30,17 @@
 
             <td><img src="{{pro.imagen}}" class=" border img-thumbnail" width="100px" alt="..."></td>
             <td>{{pro.producto}}</td>
-            <td>{{pro.precio}}</td>
-            <td *ngIf="!can">{{pro.cantidad}}</td>
+            <td>{{pro.precio | currency}}</td>
+            <td *ngIf="!(can && pro.idProducto==inputId)">{{pro.cantidad}}</td>
 
-            <td *ngIf="can">
+            <td *ngIf="can && pro.idProducto==inputId">
                 <div>
                     <input class="col-3" style="width: 70px;" #cantidad (change)="edite(pro,cantidad.value)" type="number" requiered min="0" class="form-control" placeholder="{{pro.cantidad}}">
                 </div>
             </td>
-            <td>{{pro.precio * pro.cantidad}}</td>
+            <td>{{(pro.precio * pro.cantidad) | currency}}</td>
             <td>
-
-                &nbsp; &nbsp;
+                <button type="button" class="btn btn-primary" (click)="edita(pro.idProducto)">Editar</button> &nbsp; &nbsp;
                 <button type="button" class="btn btn-danger" (click)="borrar(pro)">Borrar</button>
             </td>
 
