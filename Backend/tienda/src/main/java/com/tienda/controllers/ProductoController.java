@@ -21,25 +21,49 @@ import com.tienda.services.ProductoService;
 
 public class ProductoController {
 
+//	
+//	@Autowired
+//	private ProductoService productoService;
+//	
+//	@GetMapping("/listar/{id}") 
+//	public List<ProductosCat> listarProducto(@PathVariable Long id ){
+//		
+//		return productoService.encontrarProductosCat(id);
+//	}
+//	
+//	@GetMapping("/listarsl/{id}") 
+//	public List<ProductosCat> listarProductosl(@PathVariable Long id ){
+//		
+//		return productoService.encontrarProductosCatSinLimites(id);
+//	}
+//	
+//	@GetMapping("/carrito/{id}")
+//	public ProductosCat Producto(@PathVariable Long id) {
+//		return productoService.encontrarProductoPorId(id);
+//	}
 	
-	@Autowired
-	private ProductoService productoService;
-	
-	@GetMapping("/listar/{id}") 
-	public List<ProductosCat> listarProducto(@PathVariable Long id ){
+	@GetMapping("/folio/{max}")
+	public String getFolio(@PathVariable(name = "max") String max) {
+		String newFolio ="";
+		SimpleDateFormat formato = new SimpleDateFormat("yyyyMMdd");
 		
-		return productoService.encontrarProductosCat(id);
-	}
-	
-	@GetMapping("/listarsl/{id}") 
-	public List<ProductosCat> listarProductosl(@PathVariable Long id ){
+		try {
+			String hoy = formato.format(new Date());
+			
+			String lastF = max.substring(0,8);
+			if(!hoy.equals(lastF)) {
+				newFolio = hoy + "01";
+			}else {
+				Long suma = Long.parseLong(max) + 1L;
+				newFolio = suma.toString();
+				
+			}
+			return newFolio;
+		}catch (Exception e) {
+			
+			return e.getLocalizedMessage();
+		}
 		
-		return productoService.encontrarProductosCatSinLimites(id);
-	}
-	
-	@GetMapping("/carrito/{id}")
-	public ProductosCat Producto(@PathVariable Long id) {
-		return productoService.encontrarProductoPorId(id);
 	}
 	
 //	@GetMapping("hora/{a}")
