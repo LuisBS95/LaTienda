@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -116,14 +118,17 @@ public class ProductoController {
 				String opcion = entry.getName().substring(inicio, fin);
 				System.out.print("Nombre: "+entry.getName());
 				
-				FileOutputStream fos = new FileOutputStream(cadena+entry.getName().substring(inicio,entry.getName().length()));
+				//FileOutputStream fos = new FileOutputStream(cadena+entry.getName().substring(inicio,entry.getName().length()));
+				
 				int leer;
 				byte[] buffer = new byte[1024];
+				//List<byte> buffer = new ArrayList<>();
 				while (0 < (leer = zip.read(buffer))) {
-					fos.write(buffer, 0, leer);
+					//fos.write(buffer, 0, leer);
 					informacion = new ArrayList<String>();
-					FileReader f = new FileReader(cadena+entry.getName().substring(inicio,entry.getName().length()));
-					BufferedReader b = new BufferedReader(f);
+					//FileReader f = new FileReader(cadena+entry.getName().substring(inicio,entry.getName().length()));
+					//BufferedReader b = new BufferedReader(f);
+					BufferedReader b = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(buffer)),leer);
 					while((cadena = b.readLine())!= null) {
 						informacion.add(cadena);
 					}
@@ -132,13 +137,13 @@ public class ProductoController {
 			
 					b.close();
 				}
-				fos.close();
+				//fos.close();
 				zip.closeEntry();
 			}
-			ListaTxt lis = this.txtToObject(resultados);
+			//ListaTxt lis = this.txtToObject(resultados);
 			
 			
-			return new ResponseEntity<>(lis,HttpStatus.OK);
+			return new ResponseEntity<>(resultados,HttpStatus.OK);
 		}catch (Exception e) {
 			String error = e.getLocalizedMessage();
 		}
@@ -162,7 +167,7 @@ public class ProductoController {
 			for(String linea : lista) {
 				if(x != 0) {
 					txt = new Txt();
-					Object p = new Object();
+					
 					List<String> objeto =Arrays.asList(linea.split("\t"));
 					separadas.add(objeto);
 				}
